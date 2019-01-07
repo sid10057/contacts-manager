@@ -1,0 +1,19 @@
+<!doctype html>
+<table border="1px">
+	<tr>
+		<th border='1px'>S.NO</th>
+		<th border='1px'>NAME</th>
+		<th border='1px'>EMAIL ID</th>
+		<th border='1px'>HALL</th>
+		<th border='1px'>BRANCH</th>
+	</tr>
+	{% for user in userdetails %}
+		<tr>
+			<td>{{loop.index}}</td>
+			<td>{{user[0]}}</td>
+			<td>{{user[1]}}</td>
+			<td>{{user[2]}}</td>
+			<td>{{user[3]}}</td>
+		</tr>	
+	{% endfor %}
+</table>

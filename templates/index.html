@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<form method="POST" action="" autocomplete="off">
+	Name<input type="text" name="name" maxlength="30" /><br>
+	Email<input type="email" name="email" maxlength="50"/><br>
+	HALL<input type="text" name="hall" maxlength="50"/><br>
+	BRANCH<input type="text" name="branch" maxlength="50"/><br>
+	<div class="g-recaptcha" data-sitekey="6LfZQIcUAAAAAFX_u19mgDT6nBebRR5HnFpzEv_0"></div>
+	<input type="submit" >
+	<input type="reset" >
+</form>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+<br><br><br><br><br>
+<form method="POST" action ="/usersearch" >
+  CATEGORY<select name="category">
+    <option value="name">NAME</option>
+    <option value="email">EMAIL</option>
+    <option value="hall">HALL</option>
+    <option value="branch">BRANCH</option>
+  </select>
+	SEARCH CONTACTS	<input type="search" name="search" maxlength="30" />
+	<input type="submit" >
+</form>
