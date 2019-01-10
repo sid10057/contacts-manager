@@ -30,11 +30,11 @@ def index():
 		captcha_response = request.form['g-recaptcha-response']
 		if is_human(captcha_response):
             # Process request here
-			status ="Detail submitted successfully."
-			cur = mysql.connection.cursor()
-			cur.execute("INSERT INTO users(name,email,hall,branch) VALUES(%s,%s,%s,%s)",(name,email,hall,branch))
-			mysql.connection.commit()
-			cur.close()
+				status ="Detail submitted successfully."
+				cur = mysql.connection.cursor()
+				cur.execute("INSERT INTO users(name,email,hall,branch) VALUES(%s,%s,%s,%s)",(name,email,hall,branch))
+				mysql.connection.commit()
+				cur.close()
 		else:
              # Log invalid attempts
 			status = "Sorry ! Bots are not allowed."
@@ -72,7 +72,7 @@ def usersearch():
 	else  :
 		num = cur.execute("SELECT * FROM users WHERE branch LIKE %s ",['%'+entry+'%'])
 	if num>0 :
-		userinfo=cur.fetchall()
+		userinfo= list( dict.fromkeys(cur.fetchall()))
 		return render_template('user.html',userdetails=userinfo)
 	else :
 		return 'NO MATCH FOUND '
